@@ -1,0 +1,22 @@
+{
+    "H":                 128,
+    "D_out":              10,
+    "total_runs":          2,
+    "total_samples":      10,
+    "learning_rate":    1e-4,
+    "kappa":             100,
+    "zeta":                5,
+    "N_meta":             30,   
+    "N_grad":             20,
+    "N":                 600,
+    "len_exp_replay": 100000,
+    "n_new_points":      200,
+    "gamma":               1,
+    "eta":                 1,
+    "beta":             0.03,
+    "problem": "classification",
+    "network" :    "cnn3",
+    "batch_size":     64,
+    "data_id": "cifar10",
+    "task_wise": 0
+}

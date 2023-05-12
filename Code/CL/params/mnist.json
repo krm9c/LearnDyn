@@ -1,0 +1,22 @@
+{
+    "H":                     512,
+    "D_out":                  10,
+    "total_runs":              1,
+    "total_samples":          50,
+    "learning_rate":        1e-4,
+    "kappa":                 300,
+    "zeta":                  50,
+    "N_meta":                300,   
+    "N_grad":                  2,
+    "N":                     300,
+    "len_exp_replay":      20000,
+    "n_new_points":          300,
+    "gamma":                   1,
+    "eta":                     1,
+    "beta":                    1,
+    "problem":  "classification",
+    "network" :            "cnn",
+    "batch_size":             32,
+    "data_id":           "mnist",
+    "task_wise":                0
+}

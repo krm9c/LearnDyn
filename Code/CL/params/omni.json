@@ -1,0 +1,20 @@
+{
+    "H":                     100,
+    "D_out":                  50,
+    "total_runs":             1,
+    "total_samples":          50,
+    "learning_rate":        1e-4,
+    "kappa":                 300,
+    "zeta":                   50,
+    "N_meta":                200,   
+    "len_exp_replay":      20000,
+    "n_new_points":            5,
+    "gamma":                   1,
+    "eta":                     1,
+    "beta":                    1, 
+    "problem":  "classification",
+    "network" :            "cnn",
+    "batch_size":              8,
+    "data_id":            "omni",
+    "task_wise":               0
+}
