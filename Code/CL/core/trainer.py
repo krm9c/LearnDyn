@@ -1,3 +1,4 @@
+import os
 # python packages
 from types import SimpleNamespace
 import numpy as np
@@ -85,6 +86,8 @@ class Run_Model():
              test_loader, 
              samp_num = samp_n)
             
+
+            
             self.model.scheduler.step()
             self.config['kappa'] = self.config['kappa']+int(self.config['kappa']*0.01)
 
@@ -95,7 +98,7 @@ class Run_Model():
                 LA[samp_n], RA[samp_n] = self.model.return_score(test_loader_curr, test_loader)
 
                 # print("task_wise")
-                TA[samp_n,:] = self.model.task_wise_Accuracy(self.data, self.config['total_samples'])
+                TA[samp_n,:] = torch.as_tensor(self.model.task_wise_Accuracy(self.data, self.config['total_samples'])).cpu().numpy()
                 
                 # Printing data
                 print('Sample_number {}/{}'.format(samp_n, self.config['total_samples']-1),
@@ -108,7 +111,10 @@ class Run_Model():
                 np.array(dat_x_loss).reshape([-1,1]).shape,\
                 np.array(dat_J).reshape([-1,1]).shape)
             
-            np.savetxt('/home/kraghavan/Projects/CL/NashMCL/Balance_test/theta_loss'+str(samp_n)+'.csv', np.concatenate(\
+            if not os.path.exists('./NashMCL/Balance_test'):
+                os.makedirs('./NashMCL/Balance_test')
+                
+            np.savetxt('./NashMCL/Balance_test/theta_loss'+str(samp_n)+'.csv', np.concatenate(\
                                                         [np.array(dat_theta_loss).reshape([-1,1]),\
                                                         np.array(dat_x_loss).reshape([-1,1]),\
                                                         np.array(dat_J).reshape([-1,1])], axis=1 ), delimiter=',')    

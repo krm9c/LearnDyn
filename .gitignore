@@ -1,0 +1,15 @@
+Code/CL/data/MNIST/raw/train-labels-idx1-ubyte.gz
+Code/CL/core/__pycache__/dataloaders.cpython-310.pyc
+Code/CL/core/__pycache__/dataloaders.cpython-311.pyc
+Code/CL/core/__pycache__/model.cpython-310.pyc
+Code/CL/core/__pycache__/model.cpython-311.pyc
+Code/CL/core/__pycache__/trainer.cpython-310.pyc
+Code/CL/core/__pycache__/trainer.cpython-311.pyc
+Code/CL/data/MNIST/raw/t10k-images-idx3-ubyte
+Code/CL/data/MNIST/raw/t10k-images-idx3-ubyte.gz
+Code/CL/data/MNIST/raw/t10k-labels-idx1-ubyte
+Code/CL/data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+Code/CL/data/MNIST/raw/train-images-idx3-ubyte
+Code/CL/data/MNIST/raw/train-images-idx3-ubyte.gz
+Code/CL/data/MNIST/raw/train-labels-idx1-ubyte
+Code/CL/NashMCL/
