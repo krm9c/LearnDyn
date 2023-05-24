@@ -16,9 +16,11 @@ warnings.filterwarnings("ignore")
 ################################################
 # Sanity Check  and initialize the CPU/GPU
 if torch.cuda.is_available():
-    device = torch.device("cuda:0")  
-    # you can continue going on here, like cuda:1 cuda:2....etc. 
+    device = torch.device("cuda:0")  # you can continue going on here, like cuda:1 cuda:2....etc. 
     print("Running on the GPU")
+elif torch.backends.mps.is_available():
+    device = torch.device("mps")
+    print("Running on Apple GPU")
 else:
     device = torch.device("cpu")
     print("Running on the CPU")
