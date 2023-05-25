@@ -4,7 +4,6 @@ import torch
 import numpy as np
 import argparse
 import json
-import matplotlib.font_manager
 import matplotlib.pyplot as plt
 
 
@@ -104,6 +103,17 @@ if __name__ == '__main__':
         params['criterion'] = torch.nn.CrossEntropyLoss()
     else: 
         params['criterion'] = torch.nn.MSELoss()
+
+    ################################################
+    # Sanity Check
+    if torch.cuda.is_available():
+        print("Running on the GPU")
+    elif torch.backends.mps.is_available():
+        print("Running on Apple GPU")
+    else:
+        print("Running on the CPU")
+
+    ################################################    
     print("The parameters are", params)
     RA = np.zeros([params['total_runs'], params['total_samples']])
     LA = np.zeros([params['total_runs'], params['total_samples']])
