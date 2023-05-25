@@ -4,6 +4,7 @@ import torch
 import numpy as np
 import argparse
 import json
+import matplotlib.font_manager
 import matplotlib.pyplot as plt
 
 
@@ -40,9 +41,9 @@ class Params():
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    '--save_dir',
-    default='_sin_',
-    help="Directory to save the data in")
+    '--save_file',
+    default='out',
+    help="Name of file to save")
 parser.add_argument(
     '--json_file',
     default='sine.json',
@@ -88,7 +89,7 @@ if __name__ == '__main__':
         json_path)
     params = Params(json_path).dict
     params['opt'] = args.opt
-    params['save_file'] = args.save_dir
+    params['save_file'] = args.save_file
     if args.total_runs is not None:
         params['total_runs'] = int(args.total_runs)
     if args.total_samples is not None:
@@ -129,7 +130,11 @@ if __name__ == '__main__':
     # Runner.show_gpu(f'{0}: After empty cache') 
     # Runner.show_gpu('after all stuff have been removed')
     # Runner.print_gpu_obj()
-    np.savez(params['save_file']+'.npz', RA=RA, LA=LA, TA = TA)
+
+    if not os.path.exists('./Res'): #added fault tolerance
+        os.makedirs('./Res')
+
+    np.savez('./Res/'+params['save_file']+'.npz', RA=RA, LA=LA, TA = TA)
     print("The time elapsed for on iterations", time.time()-start_time)
     
     ################################################
@@ -154,7 +159,7 @@ if __name__ == '__main__':
               'ytick.labelsize': med,
               'figure.titlesize': small, 
               'font.family': "sans-serif",
-              'font.sans-serif': "Myriad Hebrew",
+#              'font.sans-serif': "Myriad Hebrew", #this does not work on my machine
               'text.color' : COLOR,
               'axes.labelcolor' : COLOR,
               'axes.linewidth' : 0.3,

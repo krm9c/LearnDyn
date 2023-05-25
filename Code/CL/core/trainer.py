@@ -29,7 +29,7 @@ else:
 # Main model running
 class Run_Model():
     def __init__(self, Config):
-        self.model = Net(Config).float()
+        self.model = torch.compile(Net(Config)).float() #use torch compile to increase speed
         self.model.to(device)
         self.data = data_return(Config)
         self.config = Config
@@ -184,8 +184,8 @@ class train_record():
 
     # The function comes here from py_run.
     def main(self):
-        One_M = Run_Model(self.config)
         # with profiler.profile(profile_memory=True, record_shapes=True) as prof:
+        One_M = Run_Model(self.config)
         LA, RA, TA = One_M.run_model_once()
 
         # print(self.get_gpu_memory_map())
